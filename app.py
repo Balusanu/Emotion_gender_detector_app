@@ -26,7 +26,7 @@ if uploaded_file:
     img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)  # BGR format
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)    # Convert to RGB for DeepFace
 
-    st.image(img_rgb, caption="Uploaded Image", use_container_width=True)
+st.image(img_rgb, caption="Uploaded Image", use_column_width=True)
 
     # -------------------------------------------------------
     # DeepFace Analysis: Emotion + Gender
@@ -107,3 +107,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
