@@ -26,6 +26,8 @@ if uploaded_file:
     img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)  # BGR format
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)    # Convert to RGB for DeepFace
 
+    # Display the uploaded image
+    # FIX 1: Changed 'use_container_width' to 'use_column_width'
     st.image(img_rgb, caption="Uploaded Image", use_column_width=True)
 
     # -------------------------------------------------------
@@ -35,7 +37,7 @@ if uploaded_file:
         try:
             results = DeepFace.analyze(
                 img_path=img_rgb,
-                actions=['emotion', 'gender'],   # Removed age
+                actions=['emotion', 'gender'],
                 enforce_detection=False
             )
         except Exception as e:
@@ -94,7 +96,8 @@ if uploaded_file:
     # -------------------------------------------------------
     # Display Annotated Image
     # -------------------------------------------------------
-    st.image(annotated, caption="Predicted Results", use_container_width=True)
+    # FIX 2: Changed 'use_container_width' to 'use_column_width' here as well
+    st.image(annotated, caption="Predicted Results", use_column_width=True)
 
 # -------------------------------------------------------
 # Footer Caption
@@ -107,5 +110,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-
